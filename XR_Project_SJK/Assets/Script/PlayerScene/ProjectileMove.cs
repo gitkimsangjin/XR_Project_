@@ -27,6 +27,15 @@ public class ProjectileMove : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)                     //트리거 예약 함수
+    {
+        if (other.CompareTag("Monster"))                            //Tag를 검사
+        {
+            Destroy(this.gameObject);
+            other.gameObject.GetComponent<Monster>().Damaged(1);
+        }
+    }
+
 }
 
 
