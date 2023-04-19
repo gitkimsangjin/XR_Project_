@@ -1,12 +1,9 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class PlayerHp : MonoBehaviour
 {
-    
     public int Hp = 5;
 
     public void Damaged(int Damage)
