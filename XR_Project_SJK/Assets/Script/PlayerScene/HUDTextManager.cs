@@ -22,11 +22,13 @@ public class HUDTextManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //캐릭터 머리 위에 텍스트 표시
-        Vector3 characterHeadPosition = character.transform.position;
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(characterHeadPosition);         //3D Position > 2D
-        hudText.transform.position = screenPosition + offset;
-        
+        if (character != null)
+        {
+            //캐릭터 머리 위에 텍스트 표시
+            Vector3 characterHeadPosition = character.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(characterHeadPosition);         //3D Position > 2D
+            hudText.transform.position = screenPosition + offset;
+        }
     }
 
     public void UpdateHUDTextSet(string newText, GameObject target, Vector3 TargetOffset)
@@ -36,7 +38,7 @@ public class HUDTextManager : MonoBehaviour
         GameObject temp = (GameObject)Instantiate(HudTextUp);
         temp.transform.SetParent(canvasObject.transform, false);
         temp.transform.position = screenPosition + TargetOffset;
+        temp.GetComponent<HUDMove>().textUI.text = newText;
         //HUDMove Class
-
     }
 }
